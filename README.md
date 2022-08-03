@@ -61,13 +61,16 @@
                             <div class="md:-mr-32 flex">
                                 <form action="" class="mt-3 flex flex-col md:flex-row">
                                     <div class=" relative ">
-                                        <input type="text" placeholder="https://docs.google.com/forms..." id="inputId" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                                        <input type="text" placeholder="https://docs.google.com/forms..." id="inputId" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"/>
                                     </div>
-                                    <button type="button" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
-                                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Convert & Copy</button>
+                                    <button type="button" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-sky-500 rounded-lg shadow-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2 focus:ring-offset-sky-200">
+                                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Convert</button>
                                 </form>
                             </div>
                             <!-- <div id="my_field">Result</div> -->
+                            <p class="mt-8 text-gray-700">Or use a spreadsheet to convert multiple links at once.
+                                <a class="text-sky-500 underline" href="https://docs.google.com/spreadsheets/d/1X4xG1w7yLwAPTJH6ywIOVUoa1wZTorCCVXb92U8YBKE/copy" target="_blank">Open Spreadsheet</a>.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -75,6 +78,9 @@
 
 
             <script>
+                window.onload = function () {
+                    document.getElementById("inputId").value = "";
+                };
                 function getInputValue() { // Selecting the input element and get its value
                     var inputVal = document.getElementById("inputId").value;
 
@@ -100,6 +106,3 @@
                     tooltip.innerHTML = "Copy to clipboard";
                 }
             </script>
-        </body>
-    </body>
-</html>
