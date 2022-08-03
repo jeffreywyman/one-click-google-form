@@ -51,7 +51,8 @@
                         <div class="md:w-7/12">
                             <h1 class="text-gray-900 font-bold text-4xl xl:text-5xl">Submit Google Forms with
                                 <span class="text-sky-500">one click</span>.</h1>
-                            <p class="mt-8 text-gray-700">Transform your pre-filled Google Form link into one that gets submitted automatically when clicked. <a class="text-sky-500 underline" href="https://docs.google.com/forms/d/e/1FAIpQLSeM87Z6420XQq-oTRhq6xuyYZvkw0y5BhTfIx516pPbk74eIA/formResponse?usp=pp_url&entry.294467130=Yes" target="_blank">View demo</a>.
+                            <p class="mt-8 text-gray-700">Transform your pre-filled Google Form link into one that gets submitted automatically when clicked.
+                                <a class="text-sky-500 underline" href="https://docs.google.com/forms/d/e/1FAIpQLSeM87Z6420XQq-oTRhq6xuyYZvkw0y5BhTfIx516pPbk74eIA/formResponse?usp=pp_url&entry.294467130=Yes" target="_blank">View demo</a>.
                             </p>
                             <br>
                             <h2 class=" font-display text-black  sm:text-xl">
@@ -62,7 +63,8 @@
                                     <div class=" relative ">
                                         <input type="text" placeholder="https://docs.google.com/forms..." id="inputId" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                                     </div>
-                                    <button type="button" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"><span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Convert & Copy</button>
+                                    <button type="button" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+                                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Convert & Copy</button>
                                 </form>
                             </div>
                             <!-- <div id="my_field">Result</div> -->
@@ -79,10 +81,10 @@
                     inputVal = inputVal.replace("viewform?", "formResponse?");
 
                     // Displaying the value
-                    //document.getElementById("my_field").innerText = inputVal;
+                    // document.getElementById("my_field").innerText = inputVal;
 
                     var range = document.createRange();
-                    range.selectNode(document.getElementById("my_field"));
+                    range.selectNode(document.getElementById("inputId"));
                     window.getSelection().removeAllRanges(); // clear current selection
                     window.getSelection().addRange(range); // to select text
                     document.execCommand("copy");
