@@ -3,15 +3,20 @@
 You can use the [editor on GitHub](https://github.com/jeffreywyman/one-click-google-form/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-<html>
-<form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
-</form> 
-</html>
+    <input type="text" placeholder="Paste your Pre-filled Link Here" id="inputId">
+    <button type="button" onclick="getInputValue();">Get Value</button>
+    <div id="my_field">test</div>
+    <script>
+      function getInputValue() {
+        // Selecting the input element and get its value 
+        var inputVal = document.getElementById("inputId").value;
+
+        inputVal = inputVal.replace("viewform?", "formResponse?");
+
+        // Displaying the value
+        document.getElementById("my_field").innerText = inputVal;
+      }
+    </script>
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
