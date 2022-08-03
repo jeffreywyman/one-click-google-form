@@ -1,9 +1,7 @@
-## Convert Your Pre-Filled Link Into A Single-Click Submission
-
-
 <html>
   <head>
     <title>One Click Google Form Submission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
 .tooltip {
   position: relative;
@@ -42,11 +40,34 @@
   visibility: visible;
   opacity: 1;
 }
-</style>
+    </style>
   </head>
+
   <body>
-    <p></p>
-    <input type="text" placeholder="Paste URL Here" id="inputId">
+
+<div class="relative w-full">
+
+    <div>
+       <div class="container px-8 md:px-12 xl:max-w-5xl mx-auto lg:px-7 xl:px-0">
+           <div class="md:flex md:gap-12 pt-40 lg:py-56">
+                <div class="md:w-7/12">
+                    <h1 class="text-gray-900 font-bold text-4xl xl:text-5xl">Submit Google Forms with <span class="text-sky-500">one click</span>.</h1>
+                    <p class="mt-8 text-gray-700">Transform your pre-filled Google Form link into one that gets submitted automatically when clicked.</p>
+                    <div class="md:-mr-32">
+                        <form action="" class="w-full mt-12">
+                            
+<div class=" relative ">
+    <input type="text" placeholder="Paste URL Here" id="inputId" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email"/>
+    </div>
+
+
+                        </form>
+                    </div>
+            </div>
+        </div> 
+    </div>
+</div>
+                                
     <button type="button" onclick="getInputValue();">Get Value</button>
     <div id="my_field">Result</div>
 <div class="tooltip">
