@@ -1,15 +1,15 @@
-## Welcome to GitHub Pages
+## Convert Your Pre-Filled Link Into A Single-Click Submission
 
-<!DOCTYPE html>
+
 <html>
   <head>
-    <title>Title of the Document</title>
+    <title>One Click Google Form Submission</title>
   </head>
   <body>
     <p></p>
-    <input type="text" placeholder="Paste your Pre-filled Link Here" id="inputId">
+    <input type="text" placeholder="Paste URL Here" id="inputId">
     <button type="button" onclick="getInputValue();">Get Value</button>
-    <div id="my_field">test</div>
+    <div id="my_field">Result</div>
     <script>
       function getInputValue() {
         // Selecting the input element and get its value 
@@ -23,5 +23,3 @@
     </script>
   </body>
 </html>
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
