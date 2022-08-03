@@ -78,7 +78,7 @@ function myFunction() {
 
   
   var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copied!;
+  tooltip.innerHTML = "Copied!";
 }
 
 function outFunc() {
