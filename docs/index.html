@@ -59,29 +59,31 @@
                             <h2 class=" font-display text-black  sm:text-xl">
                                 Paste your pre-filled Google Form URL
                             </h2>
-                            <p class="text-sky-400 underline text-sm"><a href="https://support.google.com/a/users/answer/9308781?hl=en" target="_blank">How to pre-fill a form</a></p>
+                            <p class="text-sky-500 underline text-sm"><a href="https://support.google.com/a/users/answer/9308781?hl=en" target="_blank">How to pre-fill a form</a></p>
                             <div class="md:-mr-32 flex">
-                                <form action="" class="mt-3 flex flex-col md:flex-row">
+                                <form action="javascript:;" class="mt-3 flex flex-col md:flex-row" onsubmit="getInputValue();">
                                     <div class=" relative ">
-                                        <input type="text" placeholder="https://docs.google.com/forms..." id="inputId" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent" required/>
+                                        <input type="text" placeholder="https://docs.google.com/forms..." id="inputId" class="URLform  rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent border-red-500" required/>
                                     </div>
-                                    <button type="button" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-sky-500 rounded-lg shadow-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2 focus:ring-offset-sky-200">
+                                    <button type="submit" onclick="getInputValue();" onmouseout="outFunc()" class="tooltip flex-shrink-0 ml-6 px-4 py-2 text-base font-semibold text-white bg-sky-500 rounded-lg shadow-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:ring-offset-2 focus:ring-offset-sky-200">
                                         <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>Convert</button>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
+                                <span class="URLerror block text-red-500 text-xs -mt-2">Please enter a pre-filled Google Form URL</span>
+                                <span class="URLsuccess block text-green-600 text-xs -mt-2">Success! Your new one-click URL is ready to use.</span>
                             <!-- <div id="my_field">Result</div> -->
                             <p class="mt-4 text-gray-700 pb-6">Or 
                                 <a class="text-sky-500 underline" href="https://docs.google.com/spreadsheets/d/1X4xG1w7yLwAPTJH6ywIOVUoa1wZTorCCVXb92U8YBKE/copy" target="_blank">use a spreadsheet</a> to convert multiple links at once.
                             </p>
                             <h3 class=" font-display text-black  sm:text-xl">
-                                Why would you do this?
+                                Why do this?
                             </h3> 
                             <p class="mt-2 text-gray-700">
                                 Here are a few reasons why you may want a one-click Google form:                                    
                                     <ul class="list-disc ml-8 mt-2">
-                                        <li><b>Maximum engagement</b><br><i>No extra steps are necessary, so you will always get maximum engagement.</i></li>
-                                        <li><b>Meta-data friendly</b><br><i>You can pre-fill your form with meta data, like blog post or topic. This is hidden from the user.</i></li>
-                                        <li><b>Privacy friendly</b><br><i>Results are anonymous by default.</i></li>
+                                        <li><b>To maximize your response rate</b><br><i>No extra steps are necessary, so you will always get maximum engagement.</i></li>
+                                        <li><b>You can add meta-data</b><br><i>You can pre-fill your form with meta data, like the blog post or topic. This is hidden from the user.</i></li>
+                                        <li><b>It's privacy-friendly</b><br><i>Results are anonymous by default.</i></li>
                                     </ul>
                             </p>
                         </div>
@@ -93,29 +95,46 @@
             <script>
                 window.onload = function () {
                     document.getElementById("inputId").value = "";
+                    const URLform = document.getElementsByClassName("URLform");
+                    const URLerror = document.getElementsByClassName("URLerror");
+                    const URLsuccess = document.getElementsByClassName("URLsuccess");
+                    URLerror[0].style.display = "none";
+                    URLsuccess[0].style.display = "none";
+                    URLform[0].classList.remove("border-red-500");
                 };
                 function getInputValue() { // Selecting the input element and get its value
+                    const URLform = document.getElementsByClassName("URLform");
+                    const URLerror = document.getElementsByClassName("URLerror");
+                    const URLsuccess = document.getElementsByClassName("URLsuccess");
                     var inputVal = document.getElementById("inputId").value;
-
-                    inputVal = inputVal.replace("viewform?", "formResponse?");
-
-                    // Displaying the value
-                    // document.getElementById("my_field").innerText = inputVal;
-
-                    var range = document.createRange();
-                    range.selectNode(document.getElementById("inputId"));
-                    window.getSelection().removeAllRanges(); // clear current selection
-                    window.getSelection().addRange(range); // to select text
-                    document.execCommand("copy");
-                    window.getSelection().removeAllRanges(); // to deselect
-
-
-                    var tooltip = document.getElementById("myTooltip");
-                    tooltip.innerHTML = "Copied!";
+                    
+                    if (!inputVal.includes("viewform?usp")){
+                        URLform[0].classList.add("border-red-500");
+                        URLerror[0].style.display = "block";
+                        URLsuccess[0].style.display = "none";
+                    } else {
+                        URLerror[0].style.display = "none";
+                        URLform[0].classList.remove("border-red-500");
+                        inputVal = inputVal.replace("viewform?", "formResponse?");
+                        document.getElementById("inputId").innerText = inputVal;
+                        navigator.clipboard.writeText(inputVal);
+                        var range = document.createRange();
+                        range.selectNode(document.getElementById("inputId"));
+                        window.getSelection().removeAllRanges(); // clear current selection
+                        window.getSelection().addRange(range); // to select text
+                        document.execCommand("copy");
+                        window.getSelection().removeAllRanges(); // to deselect
+                        var tooltip = document.getElementById("myTooltip");
+                        tooltip.innerHTML = "Copied!";
+                        URLsuccess[0].style.display = "block";
+                    }
                 }
 
                 function outFunc() {
-                    var tooltip = document.getElementById("myTooltip");
-                    tooltip.innerHTML = "Copy to clipboard";
+                    var inputVal = document.getElementById("inputId").value;
+                    if (inputVal != "") {
+                        var tooltip = document.getElementById("myTooltip");
+                        tooltip.innerHTML = "Copy to clipboard";
+                    }
                 }
             </script>
